@@ -1,3 +1,7 @@
 #Build objects
 /obj
 /bin
+
+#Robot logs
+/tests/acceptance/*.html
+/tests/acceptance/*.xml
