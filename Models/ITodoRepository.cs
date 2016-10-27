@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace aspnetcoreapp
+namespace aspnetcoreapp.Models
 {
     public interface ITodoRepository {
         void Add(TodoItem item);
