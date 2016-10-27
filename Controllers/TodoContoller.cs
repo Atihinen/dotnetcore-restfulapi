@@ -18,14 +18,17 @@ namespace aspnetcoreapp.Controllers
             return TodoItems.GetAll();
         }
 
-        [HttpGet("{id})", Name = "GetTodo")]
-        public IActionResult GetById(string id){
-            TodoItem item = TodoItems.Find(id);
-            if ( item == null){
+        [HttpGet("{id}", Name = "GetTodo")]
+        public IActionResult GetById(string id)
+        {
+            var item = TodoItems.Find(id);
+            if (item == null)
+            {
                 return NotFound();
             }
             return new ObjectResult(item);
         }
+
 
         [HttpPost]
         public IActionResult Create([FromBody] TodoItem item)
@@ -53,7 +56,7 @@ namespace aspnetcoreapp.Controllers
             }
 
             TodoItems.Update(item);
-            return new NoContentResult();
+            return CreatedAtRoute("GetTodo", new { id = item.Key }, item);
         }
 
         [HttpDelete("{id}")]
